@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:final_nav_bar/Emp%20Pages/EmpProfile.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import '../services/authserve.dart';
 
 class EmpLogin extends StatefulWidget {
   const EmpLogin({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class EmpLogin extends StatefulWidget {
 }
 
 class _EmpLogin extends State<EmpLogin> {
+  var username, ID, pass, token;
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.shortestSide < 600;
@@ -16,7 +20,7 @@ class _EmpLogin extends State<EmpLogin> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Employee Login"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 37, 53, 79),
         actions: [
           IconButton(
             icon: const Icon(Icons.info),
@@ -84,6 +88,9 @@ class _EmpLogin extends State<EmpLogin> {
                             style: const TextStyle(
                               fontSize: 18.0,
                             ),
+                            onChanged: (value) {
+                              username = value;
+                            },
                             decoration: const InputDecoration(
                               icon: Icon(
                                 Icons.person,
@@ -113,6 +120,9 @@ class _EmpLogin extends State<EmpLogin> {
                             style: const TextStyle(
                               fontSize: 18.0,
                             ),
+                            onChanged: (value) {
+                              ID = value;
+                            },
                             decoration: const InputDecoration(
                               icon: Icon(
                                 Icons.security,
@@ -142,6 +152,9 @@ class _EmpLogin extends State<EmpLogin> {
                             style: const TextStyle(
                               fontSize: 18.0,
                             ),
+                            onChanged: (value) {
+                              pass = value;
+                            },
                             decoration: const InputDecoration(
                               icon: Icon(
                                 Icons.password,
@@ -161,16 +174,31 @@ class _EmpLogin extends State<EmpLogin> {
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Color.fromARGB(255, 37, 53, 79),
                               borderRadius: BorderRadius.circular(20.0)),
                           child: FlatButton(
-                            onPressed: () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EmpProfilePage(),
-                                ),
-                              )
+                            onPressed: () {
+                              AuthService().authemp(username, ID, pass).then(
+                                (value) {
+                                  if (value.data['success']) {
+                                    token = value.data['token'];
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EmpProfilePage()));
+                                  } else {
+                                    Fluttertoast.showToast(
+                                        msg: value.data['message'],
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: Colors.red,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  }
+                                },
+                              );
                             },
                             child: const Center(
                               child: Text(

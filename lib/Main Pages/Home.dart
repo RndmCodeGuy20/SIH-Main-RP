@@ -1,5 +1,8 @@
+import 'package:final_nav_bar/Main%20Pages/ocr.dart';
+import 'package:final_nav_bar/form.dart';
+import 'package:final_nav_bar/query.dart';
 import 'package:flutter/material.dart';
-import 'package:final_nav_bar/Main%20Pages/HomePage.dart';
+import 'package:final_nav_bar/Main%20Pages/Background.dart';
 import 'package:final_nav_bar/Main%20Pages/About.dart';
 import 'package:final_nav_bar/Main%20Pages/Objective.dart';
 import 'package:final_nav_bar/Main%20Pages/Stakeholders.dart';
@@ -9,8 +12,8 @@ import 'package:final_nav_bar/Main%20Pages/SearchAssets.dart';
 // import 'package:final_nav_bar/NearbyAssets.dart';
 import 'package:final_nav_bar/Login.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,58 +22,57 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("MNREGA"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 30, 56, 100),
       ),
       drawer: const NavigationDrawer(),
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 249, 250, 252),
       body: isMobile
           ? SafeArea(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(
+                      50.0,
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Color.fromARGB(255, 203, 208, 214),
                         borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(255, 78, 89, 106),
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: Offset(4, 4)),
+                        ],
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const <Widget>[
-                          Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                          Padding(padding: EdgeInsets.fromLTRB(10, 10, 10, 10)),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                            child: Text(
-                              "Background",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                                fontSize: 24,
-                                color: Colors.blueAccent,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                            child: Text(
-                              "To address twin objectives of 'Planning' & 'Accountability' in tracking the Mahatma Gandhi National Rural Employment Guarantee Scheme (MGNREGS)-sponsored works & created 'Assets', the Ministry of Rural Development (MoRD), Government of India, has designed & implemented a technical solution 'GeoMGNREGA'.",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
-                            child: Text(
-                              "It is a path breaking initiative that uses space technology for 'Geotagging' all assets created under MGNREGS for improved planning, effective monitoring, enhanced visibility & greater transparency. GeoMGNREGA was launched on 30th of September 2016 in public domain, with a vision to make assets under MGNREGS transparent. It is a combination of Remote Sensing (RS) & Geographical Information System (GIS)-based technologies that serve as an effective tool to collect, store & analyze the various assets under MGNREGS, such as Farm Ponds, Percolation Tanks, Check Dams, Irrigation Channels, Rural Roads etc.",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
+                              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                              child: Center(
+                                child: Text(
+                                  "Welcome to MNGREGA",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto',
+                                    fontSize: 40,
+                                    color: Color.fromARGB(255, 45, 55, 72),
+                                  ),
+                                ),
+                              )),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: CircleAvatar(
+                              radius: 150.0,
+                              backgroundColor: Colors.grey,
+                              foregroundImage: AssetImage(
+                                "assets/mnrega.png",
                               ),
                             ),
                           ),
@@ -90,7 +92,7 @@ class HomePage extends StatelessWidget {
                     child: Container(
                       width: 1100,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Color.fromARGB(255, 219, 214, 214),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Column(
@@ -180,7 +182,7 @@ class NavigationDrawer extends StatelessWidget {
               textColor: Colors.blueAccent,
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const Backgroundpage(),
                 ));
               },
             ),
@@ -196,6 +198,21 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AboutPage(),
+                ));
+              },
+            ),
+            const Divider(
+              color: Colors.blueAccent,
+            ),
+            ListTile(
+              leading: const Icon(Icons.camera),
+              title: const Text(
+                'OCR',
+                style: TextStyle(fontSize: 18),
+              ),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const OCR(),
                 ));
               },
             ),
@@ -269,9 +286,9 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SearchAssets(),
-                ));
+                String stage, state;
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => myForm()));
               },
             ),
             const Divider(
