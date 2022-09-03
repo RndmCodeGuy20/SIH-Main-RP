@@ -1,5 +1,7 @@
+import 'package:final_nav_bar/form.dart';
+import 'package:final_nav_bar/query.dart';
 import 'package:flutter/material.dart';
-import 'package:final_nav_bar/Main%20Pages/HomePage.dart';
+import 'package:final_nav_bar/Main%20Pages/Background.dart';
 import 'package:final_nav_bar/Main%20Pages/About.dart';
 import 'package:final_nav_bar/Main%20Pages/Objective.dart';
 import 'package:final_nav_bar/Main%20Pages/Stakeholders.dart';
@@ -19,7 +21,7 @@ class WorkPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("MNREGA"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 30, 56, 100),
       ),
       drawer: const NavigationDrawer(),
       backgroundColor: Colors.white,
@@ -48,7 +50,7 @@ class WorkPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
                                 fontSize: 24,
-                                color: Colors.blueAccent,
+                                color: Color.fromARGB(255, 34, 52, 83),
                               ),
                             ),
                           ),
@@ -804,7 +806,7 @@ class NavigationDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const Backgroundpage(),
                 ));
               },
             ),
@@ -896,7 +898,7 @@ class NavigationDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SearchAssets(),
+                  builder: (context) => myForm(),
                 ));
               },
             ),

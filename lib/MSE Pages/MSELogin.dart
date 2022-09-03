@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:final_nav_bar/MSE%20Pages/MSEProfile.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import '../services/authserve.dart';
 
 class MSELogin extends StatefulWidget {
   const MSELogin({Key? key}) : super(key: key);
@@ -9,14 +12,15 @@ class MSELogin extends StatefulWidget {
 }
 
 class _MSELoginState extends State<MSELogin> {
+  var username, ID, pass, token;
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.shortestSide < 600;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MSE Login"),
-        backgroundColor: Colors.blueAccent,
+        title: const Text("MSE Login Portal"),
+        backgroundColor: Color.fromARGB(255, 25, 41, 69),
         actions: [
           IconButton(
             icon: const Icon(Icons.info),
@@ -50,7 +54,7 @@ class _MSELoginState extends State<MSELogin> {
                         height: 30.0,
                       ),
                       const Text(
-                        "MNREGA Login",
+                        "MNREGA Login Portal",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
@@ -84,6 +88,9 @@ class _MSELoginState extends State<MSELogin> {
                             style: const TextStyle(
                               fontSize: 18.0,
                             ),
+                            onChanged: (value) {
+                              username = value;
+                            },
                             decoration: const InputDecoration(
                               icon: Icon(
                                 Icons.person,
@@ -113,6 +120,9 @@ class _MSELoginState extends State<MSELogin> {
                             style: const TextStyle(
                               fontSize: 18.0,
                             ),
+                            onChanged: (value) {
+                              ID = value;
+                            },
                             decoration: const InputDecoration(
                               icon: Icon(
                                 Icons.security,
@@ -142,6 +152,9 @@ class _MSELoginState extends State<MSELogin> {
                             style: const TextStyle(
                               fontSize: 18.0,
                             ),
+                            onChanged: (value) {
+                              pass = value;
+                            },
                             decoration: const InputDecoration(
                               icon: Icon(
                                 Icons.password,
@@ -161,23 +174,38 @@ class _MSELoginState extends State<MSELogin> {
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Color.fromARGB(255, 43, 70, 101),
                               borderRadius: BorderRadius.circular(20.0)),
                           child: FlatButton(
                             onPressed: () => {
-                              Navigator.push(
-                                context,
+                              AuthService().auth(username, ID, pass).then(
+                                (value) {
+                                  if (value.data["success"]) {
+                                    token = value.data['token'];
+                                    print(token);
+                                  }
+                                },
+                              ),
+                              AuthService().getInfo(token).then(
+                                (value) {
+                                  username = value.data["msg"]["username"];
+                                  ID = value.data["msg"]["mseID"];
+                                },
+                              ),
+                              Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const MSEProfilePage(),
+                                  builder: (context) => MSEProfilePage(
+                                      username: username, ID: ID),
                                 ),
-                              )
+                              ),
                             },
                             child: const Center(
                               child: Text(
                                 'Login',
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -332,7 +360,7 @@ class _MSELoginState extends State<MSELogin> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const MSEProfilePage(),
+                                  builder: (context) => const MSELogin(),
                                 ),
                               )
                             },

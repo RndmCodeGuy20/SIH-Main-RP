@@ -1,7 +1,10 @@
 import 'package:final_nav_bar/Emp%20Pages/EmpLogin.dart';
 import 'package:final_nav_bar/MSE%20Pages/MSELogin.dart';
+import 'package:final_nav_bar/Main%20Pages/Home.dart';
+import 'package:final_nav_bar/form.dart';
+import 'package:final_nav_bar/query.dart';
 import 'package:flutter/material.dart';
-import 'package:final_nav_bar/Main%20Pages/HomePage.dart';
+import 'package:final_nav_bar/Main%20Pages/Background.dart';
 import 'package:final_nav_bar/Main%20Pages/About.dart';
 import 'package:final_nav_bar/Main%20Pages/Objective.dart';
 import 'package:final_nav_bar/Main%20Pages/Stakeholders.dart';
@@ -22,10 +25,10 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("MNREGA"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 30, 56, 100),
       ),
       drawer: const NavigationDrawer(),
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 71, 94, 142),
       body: isMobile
           ? SafeArea(
               child: Center(
@@ -34,7 +37,14 @@ class LoginPage extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(0),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(255, 1, 5, 18),
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: Offset(4, 4)),
+                        ],
                       ),
                       child: Image.asset(
                         'assets/mnrega.png',
@@ -42,14 +52,15 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 30.0,
+                      height: 50.0,
                     ),
                     const Text(
                       "MNREGA",
                       style: TextStyle(
+                        color: Color.fromARGB(255, 8, 10, 20),
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins',
-                        fontSize: 24,
+                        fontFamily: 'Roboto',
+                        fontSize: 30,
                       ),
                     ),
                     const SizedBox(
@@ -58,19 +69,18 @@ class LoginPage extends StatelessWidget {
                     const Text(
                       "Login as",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Roboto',
                         fontSize: 20,
                       ),
                     ),
                     const SizedBox(
                       height: 50.0,
                     ),
-                    Row(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         RaisedButton(
-                          color: Colors.blueAccent,
+                          color: Color.fromARGB(255, 33, 56, 95),
                           onPressed: () {
                             Navigator.push(
                                 context,
@@ -82,8 +92,7 @@ class LoginPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Colors.white,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Abel',
                             ),
                           ),
                         ),
@@ -91,7 +100,7 @@ class LoginPage extends StatelessWidget {
                           width: 50.0,
                         ),
                         RaisedButton(
-                          color: Colors.blueAccent,
+                          color: Color.fromARGB(255, 144, 150, 161),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -104,7 +113,7 @@ class LoginPage extends StatelessWidget {
                             "Employee",
                             style: TextStyle(
                               fontSize: 20.0,
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 29, 28, 28),
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.bold,
                             ),
@@ -253,12 +262,27 @@ class NavigationDrawer extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.location_pin),
               title: const Text(
+                'Home',
+                style: TextStyle(fontSize: 18),
+              ),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Home(),
+                ));
+              },
+            ),
+            const Divider(
+              color: Colors.blueAccent,
+            ),
+            ListTile(
+              leading: const Icon(Icons.location_pin),
+              title: const Text(
                 'Background',
                 style: TextStyle(fontSize: 18),
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const Backgroundpage(),
                 ));
               },
             ),
@@ -348,7 +372,7 @@ class NavigationDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SearchAssets(),
+                  builder: (context) => myForm(),
                 ));
               },
             ),

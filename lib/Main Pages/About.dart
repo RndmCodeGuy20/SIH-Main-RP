@@ -1,5 +1,7 @@
+import 'package:final_nav_bar/Main%20Pages/Home.dart';
+import 'package:final_nav_bar/Main%20Pages/ocr.dart';
 import 'package:flutter/material.dart';
-import 'package:final_nav_bar/Main%20Pages/HomePage.dart';
+import 'package:final_nav_bar/Main%20Pages/Background.dart';
 import 'package:final_nav_bar/Main%20Pages/Objective.dart';
 import 'package:final_nav_bar/Main%20Pages/Stakeholders.dart';
 import 'package:final_nav_bar/Main%20Pages/TenEntitlement.dart';
@@ -18,7 +20,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("MNREGA"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 30, 56, 100),
       ),
       drawer: const NavigationDrawer(),
       backgroundColor: Colors.white,
@@ -33,6 +35,13 @@ class AboutPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(255, 78, 89, 106),
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: Offset(4, 4)),
+                        ],
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -47,7 +56,7 @@ class AboutPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
                                 fontSize: 24,
-                                color: Colors.blueAccent,
+                                color: Color.fromARGB(255, 54, 66, 86),
                               ),
                             ),
                           ),
@@ -150,12 +159,24 @@ class NavigationDrawer extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.location_pin),
               title: const Text(
+                'Home',
+                style: TextStyle(fontSize: 18),
+              ),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Home(),
+                ));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.location_pin),
+              title: const Text(
                 'Background',
                 style: TextStyle(fontSize: 18),
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const Backgroundpage(),
                 ));
               },
             ),
@@ -173,6 +194,21 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AboutPage(),
+                ));
+              },
+            ),
+            const Divider(
+              color: Colors.blueAccent,
+            ),
+            ListTile(
+              leading: const Icon(Icons.camera),
+              title: const Text(
+                'OCR',
+                style: TextStyle(fontSize: 18),
+              ),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const OCR(),
                 ));
               },
             ),

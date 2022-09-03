@@ -10,19 +10,17 @@ class EmpPersonal extends StatefulWidget {
 class _EmpPersonal extends State<EmpPersonal> {
   @override
   Widget build(BuildContext context) {
-
     final isMobile = MediaQuery.of(context).size.shortestSide < 600;
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("MSE Profile"),
-          backgroundColor: Colors.blueAccent,
-        ),
-        body: isMobile
-          ?SafeArea(
-          child: Center(
-            child: Column(
-                children: <Widget>[
+      appBar: AppBar(
+        title: const Text("MSE Profile"),
+        backgroundColor: Color.fromARGB(255, 39, 63, 104),
+      ),
+      body: isMobile
+          ? SafeArea(
+              child: Center(
+                child: Column(children: <Widget>[
                   const SizedBox(
                     height: 20.0,
                   ),
@@ -65,7 +63,7 @@ class _EmpPersonal extends State<EmpPersonal> {
                               radius: 50.0,
                               backgroundColor: Colors.grey,
                               foregroundImage: AssetImage(
-                                "assets/user.jpg",
+                                "assets/emp.jpg",
                               ),
                             ),
                           ),
@@ -196,14 +194,12 @@ class _EmpPersonal extends State<EmpPersonal> {
                       ),
                     ),
                   ),
-                ]
-            ),
-          ),
-        )
-          :SafeArea(
-          child: Center(
-            child: Column(
-                children: <Widget>[
+                ]),
+              ),
+            )
+          : SafeArea(
+              child: Center(
+                child: Column(children: <Widget>[
                   const SizedBox(
                     height: 20.0,
                   ),
@@ -247,7 +243,7 @@ class _EmpPersonal extends State<EmpPersonal> {
                               radius: 50.0,
                               backgroundColor: Colors.grey,
                               foregroundImage: AssetImage(
-                                "assets/user.jpg",
+                                "assets/emp.jpg",
                               ),
                             ),
                           ),
@@ -380,10 +376,9 @@ class _EmpPersonal extends State<EmpPersonal> {
                       ),
                     ),
                   ),
-                ]
+                ]),
+              ),
             ),
-          ),
-        ),
     );
   }
 }

@@ -20,7 +20,7 @@ class _EmpProfilePageState extends State<EmpProfilePage> {
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
         title: const Text("MGNERGA"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 39, 63, 104),
       ),
       // AppBar(
       //   leading: const Icon(
@@ -43,7 +43,7 @@ class _EmpProfilePageState extends State<EmpProfilePage> {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.blueAccent,
+                            color: Color.fromARGB(255, 39, 63, 104),
                             borderRadius: BorderRadius.circular(100.0),
                           ),
                           child: const Padding(
@@ -51,6 +51,9 @@ class _EmpProfilePageState extends State<EmpProfilePage> {
                             child: CircleAvatar(
                               radius: 75.0,
                               backgroundColor: Color(0xffffffff),
+                              foregroundImage: AssetImage(
+                                "assets/emp.jpg",
+                              ),
                             ),
                           ),
                         ),
@@ -387,7 +390,9 @@ class _EmpProfilePageState extends State<EmpProfilePage> {
                             padding: EdgeInsets.all(4.0),
                             child: CircleAvatar(
                               radius: 75.0,
-                              backgroundColor: Color(0xffffffff),
+                              foregroundImage: AssetImage(
+                                "assets/emp.jpg",
+                              ),
                             ),
                           ),
                         ),
@@ -500,7 +505,7 @@ class _EmpProfilePageState extends State<EmpProfilePage> {
                         FlatButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MSEWorkHistory(),
+                              builder: (context) => const workhistory(),
                             ));
                           },
                           child: Container(

@@ -1,16 +1,14 @@
 import 'package:final_nav_bar/Login.dart';
-import 'package:final_nav_bar/MSE%20Pages/MSEWorkHistory.dart';
 import 'package:flutter/material.dart';
 import 'package:final_nav_bar/MSE%20Pages/MSEPersonal.dart';
+import 'MSEWorkData.dart';
 
-class MSEProfilePage extends StatefulWidget {
-  const MSEProfilePage({Key? key}) : super(key: key);
+class MSEProfilePage extends StatelessWidget {
+  final String username, ID;
 
-  @override
-  State<MSEProfilePage> createState() => _MSEProfilePageState();
-}
+  const MSEProfilePage({Key? key, required this.username, required this.ID})
+      : super(key: key);
 
-class _MSEProfilePageState extends State<MSEProfilePage> {
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.shortestSide < 600;
@@ -19,7 +17,7 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
         title: const Text("MGNERGA"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 39, 63, 104),
       ),
       body: isMobile
           ? SafeArea(
@@ -32,23 +30,25 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.blueAccent,
+                            color: Color.fromARGB(255, 21, 37, 63),
                             borderRadius: BorderRadius.circular(100.0),
                           ),
                           child: const Padding(
                             padding: EdgeInsets.all(4.0),
                             child: CircleAvatar(
-                              radius: 75.0,
-                              backgroundColor: Color(0xffffffff),
-                            ),
+                                radius: 75.0,
+                                backgroundColor: Color(0xffffffff),
+                                foregroundImage: AssetImage(
+                                  "assets/emp.jpg",
+                                )),
                           ),
                         ),
                         const SizedBox(
                           height: 10.0,
                         ),
-                        const Text(
-                          "Hemraj Yadav",
-                          style: TextStyle(
+                        Text(
+                          username.toString(),
+                          style: const TextStyle(
                             color: Color(0xFF212121),
                             fontWeight: FontWeight.bold,
                             fontFamily: "Poppins",
@@ -75,10 +75,10 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                                 color: const Color(0xFFCECECE),
                               ),
                               child: Row(
-                                children: const <Widget>[
+                                children: <Widget>[
                                   Text(
-                                    "0293ur9028rcn",
-                                    style: TextStyle(
+                                    ID,
+                                    style: const TextStyle(
                                       color: Color(0xFF212121),
                                       fontFamily: "JetBrains",
                                       fontSize: 14.0,
@@ -102,9 +102,14 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                         ),
                         FlatButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MSEPersonal(),
-                            ));
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MSEPersonal(
+                                  username: username,
+                                  ID: ID,
+                                ),
+                              ),
+                            );
                           },
                           child: Container(
                             height: 50.0,
@@ -148,7 +153,7 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                         FlatButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MSEWorkHistory(),
+                              builder: (context) => const WorkData(),
                             ));
                           },
                           child: Container(
@@ -170,7 +175,7 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                                     width: 20.0,
                                   ),
                                   Text(
-                                    "Work History",
+                                    "Work",
                                     style: TextStyle(
                                       fontSize: 16.0,
                                       fontFamily: 'Poppins',
@@ -437,7 +442,10 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                         FlatButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MSEPersonal(),
+                              builder: (context) => MSEPersonal(
+                                username: username,
+                                ID: ID,
+                              ),
                             ));
                           },
                           child: Container(
@@ -483,7 +491,7 @@ class _MSEProfilePageState extends State<MSEProfilePage> {
                         FlatButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MSEWorkHistory(),
+                              builder: (context) => const WorkData(),
                             ));
                           },
                           child: Container(

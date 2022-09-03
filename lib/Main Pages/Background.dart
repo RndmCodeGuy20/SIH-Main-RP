@@ -9,10 +9,11 @@ import 'package:final_nav_bar/Main%20Pages/Stakeholders.dart';
 import 'package:final_nav_bar/Main%20Pages/TenEntitlement.dart';
 import 'package:final_nav_bar/Main%20Pages/Works.dart';
 import 'package:final_nav_bar/Main%20Pages/SearchAssets.dart';
+// import 'package:final_nav_bar/NearbyAssets.dart';
 import 'package:final_nav_bar/Login.dart';
 
-class ObjectivePage extends StatelessWidget {
-  const ObjectivePage({Key? key}) : super(key: key);
+class Backgroundpage extends StatelessWidget {
+  const Backgroundpage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class ObjectivePage extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 30, 56, 100),
       ),
       drawer: const NavigationDrawer(),
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 249, 250, 252),
       body: isMobile
           ? SafeArea(
               child: SingleChildScrollView(
@@ -34,8 +35,15 @@ class ObjectivePage extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 170, 173, 180),
+                        color: Color.fromARGB(255, 203, 208, 214),
                         borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(255, 78, 89, 106),
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: Offset(4, 4)),
+                        ],
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -43,67 +51,38 @@ class ObjectivePage extends StatelessWidget {
                         children: const <Widget>[
                           Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                            child: Text(
-                              "Objectives",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                                fontSize: 24,
-                                color: Color.fromARGB(255, 31, 50, 84),
-                              ),
-                            ),
-                          ),
+                              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                              child: Center(
+                                child: Text(
+                                  "BACKGROUND",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto',
+                                    fontSize: 28,
+                                    color: Color.fromARGB(255, 39, 58, 91),
+                                  ),
+                                ),
+                              )),
                           Padding(
                             padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                             child: Text(
-                              "- Providing up to 100 days of unskilled manual work in a financial year to every household in rural areas, as per demand, resulting in creation of productive assets of prescribed quality & durability.",
+                              "To address twin objectives of 'Planning' & 'Accountability' in tracking the Mahatma Gandhi National Rural Employment Guarantee Scheme (MGNREGS)-sponsored works & created 'Assets', the Ministry of Rural Development (MoRD), Government of India, has designed & implemented a technical solution 'GeoMGNREGA'.",
                               style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                // fontWeight: FontWeight.w600,
+                                fontSize: 17,
+                                fontFamily: 'Abel',
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
-                          Divider(
-                            color: Colors.blueAccent,
-                          ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
                             child: Text(
-                              "- Strengthening the livelihood resource-base of the poor.",
+                              "It is a path breaking initiative that uses space technology for 'Geotagging' all assets created under MGNREGS for improved planning, effective monitoring, enhanced visibility & greater transparency. GeoMGNREGA was launched on 30th of September 2016 in public domain, with a vision to make assets under MGNREGS transparent. It is a combination of Remote Sensing (RS) & Geographical Information System (GIS)-based technologies that serve as an effective tool to collect, store & analyze the various assets under MGNREGS, such as Farm Ponds, Percolation Tanks, Check Dams, Irrigation Channels, Rural Roads etc.",
                               style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                // fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.blueAccent,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                            child: Text(
-                              "- Proactively ensuring social inclusion.",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                // fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.blueAccent,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
-                            child: Text(
-                              "- Strengthening of Panchayati Raj Institutions (PRIs).",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Montserrat',
-                                // fontWeight: FontWeight.w600,
+                                fontSize: 17,
+                                fontFamily: 'Abel',
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
@@ -123,18 +102,18 @@ class ObjectivePage extends StatelessWidget {
                     child: Container(
                       width: 1100,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Color.fromARGB(255, 219, 214, 214),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const <Widget>[
-                          Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 0)),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                            padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
                             child: Text(
-                              "Objectives",
+                              "Background",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
@@ -146,53 +125,22 @@ class ObjectivePage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                             child: Text(
-                              "- Providing up to 100 days of unskilled manual work in a financial year to every household in rural areas, as per demand, resulting in creation of productive assets of prescribed quality & durability.",
+                              "To address twin objectives of 'Planning' & 'Accountability' in tracking the Mahatma Gandhi National Rural Employment Guarantee Scheme (MGNREGS)-sponsored works & created 'Assets', the Ministry of Rural Development (MoRD), Government of India, has designed & implemented a technical solution 'GeoMGNREGA'.",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontFamily: 'Poppins',
-                                // fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
-                          Divider(
-                            color: Colors.blueAccent,
-                          ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
                             child: Text(
-                              "- Strengthening the livelihood resource-base of the poor.",
+                              "It is a path breaking initiative that uses space technology for 'Geotagging' all assets created under MGNREGS for improved planning, effective monitoring, enhanced visibility & greater transparency. GeoMGNREGA was launched on 30th of September 2016 in public domain, with a vision to make assets under MGNREGS transparent. It is a combination of Remote Sensing (RS) & Geographical Information System (GIS)-based technologies that serve as an effective tool to collect, store & analyze the various assets under MGNREGS, such as Farm Ponds, Percolation Tanks, Check Dams, Irrigation Channels, Rural Roads etc.",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontFamily: 'Poppins',
-                                // fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.blueAccent,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                            child: Text(
-                              "- Proactively ensuring social inclusion.",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                // fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.blueAccent,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
-                            child: Text(
-                              "- Strengthening of Panchayati Raj Institutions (PRIs).",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Montserrat',
-                                // fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
@@ -248,10 +196,12 @@ class NavigationDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.location_pin),
+              iconColor: Colors.blueAccent,
               title: const Text(
                 'Background',
                 style: TextStyle(fontSize: 18),
               ),
+              textColor: Colors.blueAccent,
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const Backgroundpage(),
@@ -278,12 +228,10 @@ class NavigationDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.games_outlined),
-              iconColor: Colors.blueAccent,
               title: const Text(
                 'Objectives',
                 style: TextStyle(fontSize: 18),
               ),
-              textColor: Colors.blueAccent,
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const ObjectivePage(),
